@@ -8,6 +8,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  color: white;
 }
 body .content-wrapper {
   border: 2px solid orange;
