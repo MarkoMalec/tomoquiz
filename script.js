@@ -13,11 +13,12 @@ function quiz(data) {
 
     var contentWrapper = document.getElementsByClassName("content-wrapper");
     let questionWrapper = document.getElementById("question");
-    var answerWrapper = document.getElementsByClassName("answers")[0];
+    var answerWrapper = document.querySelector(".answers");
     var rewardDiv = document.getElementById("right-conent");
     let allAnswers = data.questions[0].answer//to je array
     let correctAns = data.questions[0].correctAns;
 
+    odgovor0 = allAnswers[0];
     const [answer0, answer1, answer2, answer3] = [
         allAnswers[0],
         allAnswers[1],
@@ -33,7 +34,47 @@ function quiz(data) {
         answerWrapper.innerHTML = `<div class="ans"> ${answer0}</div><div class="ans"> ${answer1}</div>
     <div class="ans"> ${answer2}</div>
     <div class="ans"> ${answer3}</div>`
-    }//loop kroz pitanja i sprema ih u container
+    }//iteracija kroz pitanja i stavlja ih u container
+
+
+
+    // Dodajte event listener za svaki odgovor
+    let ans = document.querySelectorAll(".ans");
+
+
+    ans.forEach((ans, index) => {
+        ans.addEventListener("click", () => checkCorrect(index, correctAns));
+    });
+
+
+    let answerDivs = document.querySelectorAll(".ans");
+    answerDivs.forEach((answerDiv, index) => {
+        console.log("Element:", answerDiv); // Trenutni element
+        console.log("Indeks:", index);      // Indeks trenutnog elementa
+    });
+}
+
+
+
+
+function checkCorrect(userAnswerIndex, correctAns) {
+    if (userAnswerIndex == correctAns) {
+        console.log("Točan odgovor!");
+    } else {
+        console.log("Pogrešan odgovor!");
+
+
+    };
+
+
 
 
 }
+
+
+
+
+
+
+
+
