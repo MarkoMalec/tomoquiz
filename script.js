@@ -28,7 +28,7 @@ function quiz(data) {
     ];
 
 
-    questionWrapper.innerText = data.questions[questionNum].question;//ubacili smo pitanje iz question.json u question div
+
 
     for (let i = 0; i < allAnswers.length; i++) {
         answerWrapper.innerHTML = `<div class="ans"> ${answer0}</div><div class="ans"> ${answer1}</div>
@@ -47,29 +47,50 @@ function quiz(data) {
     });
 
 
-    let answerDivs = document.querySelectorAll(".ans");
-    answerDivs.forEach((answerDiv, index) => {
-        console.log("Element:", answerDiv); // Trenutni element
-        console.log("Indeks:", index);      // Indeks trenutnog elementa
-    });
+
+
+
+
+
+
+
+
+    function checkCorrect(userAnswerIndex, correctAns) {
+        if (userAnswerIndex == correctAns) {
+            console.log("Točan odgovor!");
+            questionNum++
+            console.log(questionNum)
+        } else {
+            console.log("Pogrešan odgovor!");
+
+
+        };
+
+        questionWrapper.innerText = data.questions[questionNum].question;//ubacili smo pitanje iz question.json u question div
+
+    }
+
+
+
+
+
+
+
+
+
+
+    /*
+        let answerDivs = document.querySelectorAll(".ans");
+        answerDivs.forEach((answerDiv, index) => {
+            console.log("Element:", answerDiv); // Trenutni element
+            console.log("Indeks:", index);      // Indeks trenutnog elementa
+        });*/
 }
 
 
 
 
-function checkCorrect(userAnswerIndex, correctAns) {
-    if (userAnswerIndex == correctAns) {
-        console.log("Točan odgovor!");
-    } else {
-        console.log("Pogrešan odgovor!");
 
-
-    };
-
-
-
-
-}
 
 
 
