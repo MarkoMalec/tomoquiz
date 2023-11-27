@@ -3,24 +3,24 @@
     {
       "question": "prvo pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 3
+      "correctAns": 0
     },
 
     {
       "question": "drugo pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 3
+      "correctAns": 0
     },
 
     {
       "question": "trece pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 3
+      "correctAns": 0
     },
     {
       "question": "cetvrto pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 3
+      "correctAns": 0
     }
   ]
 }
