@@ -1,5 +1,26 @@
 {
-  "question": "in the sport of JiuJitsu, an omoplata is an attack to the:",
-  "answer": ["arm", "neck", "leg", "shoulder"],
-  "correctAns": 3
+  "questions": [
+    {
+      "question": "prvo pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 3
+    },
+
+    {
+      "question": "drugo pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 3
+    },
+
+    {
+      "question": "trece pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 3
+    },
+    {
+      "question": "cetvrto pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 3
+    }
+  ]
 }
