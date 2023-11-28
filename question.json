@@ -2,25 +2,25 @@
   "questions": [
     {
       "question": "prvo pitanje:",
-      "answer": ["ne", "ne", "ne", "da"],
+      "answer": ["da", "ne", "ne", "ne"],
       "correctAns": 0
     },
 
     {
       "question": "drugo pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 0
+      "correctAns": 1
     },
 
     {
       "question": "trece pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 0
+      "correctAns": 2
     },
     {
       "question": "cetvrto pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 0
+      "correctAns": 3
     }
   ]
 }
