@@ -49,9 +49,9 @@ function quiz(data) {
     });
 
     //akko uspijem povećati index onda ce correctAns++
-    function checkCorrect(userAnswerIndex, index) {
-        console.log(index);
-        if (userAnswerIndex === index) {
+    function checkCorrect(ans, index) {
+        console.log("index je: ", correctAns);
+        if (ans === index) {
             console.log("Točan odgovor!");
             questionNum++
             moneyTrack++
@@ -88,12 +88,13 @@ function quiz(data) {
 
 
         }
-        console.log(questionNum, moneyTrack)
-        // console.log("tocan odgovor je ", correctAns);
-        //console.log("broj pitanja je ", questionNum);
+        //  console.log(questionNum, moneyTrack)
+
+        console.log("tocan odgovor je ", correctAns);
+        console.log("broj pitanja je ", questionNum);
         //console.log(correctAns[questionNum]);
         // console.log(ans[userAnswerIndex]);
-        // console.log(userAnswerIndex);
+        console.log("ans je = ", ans);
     }
 }
 
