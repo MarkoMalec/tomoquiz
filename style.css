@@ -58,7 +58,7 @@ body .content-wrapper .right-content div {
   border: 1px solid black;
 }
 
-.selected {
+.currentMoney {
   background-color: #00ff00; /* Zamijenite ovu boju prema vašim preferencijama */
   color: #ffffff; /* Boja teksta, također je preporučljivo prilagoditi */
 }/*# sourceMappingURL=style.css.map */

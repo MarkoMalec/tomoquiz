@@ -46,6 +46,21 @@ function quiz(data) {
     ans.forEach((ans, index) => {
         ans.addEventListener("click", () => checkCorrect(index, correctAns));
 
+
+
+
+        const money = document.getElementsByTagName("p");
+        moneyArr = [...money].reverse();
+        // console.log(moneyArr);
+
+        for (m = 0; m < moneyArr.length; m++) {
+            moneyArr[questionNum].classList.add("currentMoney");
+        }
+
+
+
+
+
     });
 
     //akko uspijem povećati index onda ce correctAns++
@@ -56,14 +71,27 @@ function quiz(data) {
             questionNum++
             moneyTrack++
 
+
+            const money = document.getElementsByTagName("p");
+            moneyArr = [...money].reverse();
+            console.log("ovo je money array: ", moneyArr);
+
+            for (m = 0; m < moneyArr.length; m++) {
+                moneyArr[questionNum].classList.add("currentMoney");
+
+
+
+                if (m = moneyArr[questionNum] - 1) {
+                    moneyArr[questionNum].classList.remove("currentMoney")
+                    console.log("class is removed");
+                }
+
+            }
+
+            //reload
             correctAns = data.questions[questionNum].correctAns;//moram ga opet ovdje staviti da se ucita
-
-
-
             // ans[userAnswerIndex].style.backgroundColor = "green";
             questionWrapper.innerText = data.questions[questionNum].question;//opet ucitavam pitanja jer je questionNum++
-
-
 
 
             //  delay 
@@ -90,11 +118,8 @@ function quiz(data) {
         }
         //  console.log(questionNum, moneyTrack)
 
-        console.log("tocan odgovor je ", correctAns);
-        console.log("broj pitanja je ", questionNum);
-        //console.log(correctAns[questionNum]);
-        // console.log(ans[userAnswerIndex]);
-        console.log("ans je = ", ans);
+
+
     }
 }
 

@@ -1,67 +1,66 @@
-// Fetchanje podataka iz JSON datoteke
 fetch("question.json")
     .then(response => response.json())
     .then(data => quiz(data));
-// ...
-// ...
+
 function quiz(data) {
     let questionNum = 0;
     let moneyTrack = 0;
 
     let questionWrapper = document.getElementById("question");
     let answerWrapper = document.querySelector(".answers");
+    let rewardDiv = document.getElementById("right-content");
 
-    function setQuestionAndAnswers() {
+    let ans = document.querySelectorAll(".ans");
+
+    function updateMoneyClass() {
+        // Ukloni klasu 'currentMoney' sa svih elemenata
+        moneyArr.forEach((moneyElem) => {
+            moneyElem.classList.remove("currentMoney");
+        });
+
+        // Dodaj klasu 'currentMoney' samo trenutnom elementu
+        moneyArr[questionNum].classList.add("currentMoney");
+    }
+
+    function renderQuestion() {
         questionWrapper.innerText = data.questions[questionNum].question;
+
         let allAnswers = data.questions[questionNum].answer;
+        const [answer0, answer1, answer2, answer3] = allAnswers;
 
-        answerWrapper.innerHTML = "";
-        for (let i = 0; i < allAnswers.length; i++) {
-            answerWrapper.innerHTML += `<div class="ans">${allAnswers[i]}</div>`;
-        }
+        answerWrapper.innerHTML = `
+            <div class="ans">${answer0}</div>
+            <div class="ans">${answer1}</div>
+            <div class="ans">${answer2}</div>
+            <div class="ans">${answer3}</div>
+        `;
 
-        let ans = document.querySelectorAll(".ans");
+        // Ponovno postavljamo event listenere nakon ažuriranja pitanja
+        ans = document.querySelectorAll(".ans");
         ans.forEach((ans, index) => {
             ans.addEventListener("click", () => checkCorrect(index, data.questions[questionNum].correctAns));
         });
     }
 
+    ans.forEach((ans, index) => {
+        ans.addEventListener("click", () => checkCorrect(index, data.questions[questionNum].correctAns));
+    });
+
     function checkCorrect(ans, index) {
+        console.log("index je: ", index);
         if (ans === index) {
             console.log("Točan odgovor!");
             questionNum++;
             moneyTrack++;
-
-            let totalDivs = document.querySelectorAll('.right-content > div');
-            console.log(totalDivs);
-            let divToChangeColor = document.querySelector('.right-content > div:nth-child(' + (totalDivs - moneyTrack + 1) + ')');
-
-            if (divToChangeColor) {
-                divToChangeColor.style.backgroundColor = "orange";
-            }
-
-            // Postavi preostale divove na zadane boje
-            for (let i = moneyTrack + 1; i <= totalDivs; i++) {
-                let defaultDiv = document.querySelector('.right-content > div:nth-child(' + (totalDivs - i + 1) + ')');
-                if (defaultDiv) {
-                    defaultDiv.style.backgroundColor = "red"; // Postavi na zadanu boju (može biti prazno)
-                }
-            }
-
-            if (questionNum < data.questions.length) {
-                setQuestionAndAnswers();
-            } else {
-                console.log("Kviz završen!");
-            }
+            updateMoneyClass();
+            renderQuestion();
         } else {
             console.log("Pogrešan odgovor!");
-            // Dodaj ovdje željenu logiku za pogrešan odgovor
+            // Dodaj logiku za pogrešan odgovor ako je potrebno
         }
-
-        // console.log("Točan odgovor je ", index);
-        // console.log("Broj pitanja je ", questionNum);
-        //  console.log("MoneyTrack je ", moneyTrack);
     }
 
-    setQuestionAndAnswers();
+    // Inicijalni poziv funkcija za prikaz prvog pitanja i postavljanje event listenera
+    renderQuestion();
+    updateMoneyClass();
 }

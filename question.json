@@ -3,24 +3,60 @@
     {
       "question": "prvo pitanje:",
       "answer": ["da", "ne", "ne", "ne"],
-      "correctAns": 3
+      "correctAns": 0
     },
 
     {
       "question": "drugo pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 1
+      "correctAns": 0
     },
 
     {
       "question": "trece pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 2
+      "correctAns": 0
     },
     {
       "question": "cetvrto pitanje:",
       "answer": ["ne", "ne", "ne", "da"],
-      "correctAns": 3
+      "correctAns": 0
+    },
+
+    {
+      "question": "peto pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "6 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "7 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "8 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "9 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "10 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
+    },
+    {
+      "question": "11 pitanje:",
+      "answer": ["ne", "ne", "ne", "da"],
+      "correctAns": 0
     }
   ]
 }
