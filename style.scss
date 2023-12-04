@@ -63,3 +63,31 @@ body {
   background-color: #00ff00; /* Zamijenite ovu boju prema vašim preferencijama */
   color: #ffffff; /* Boja teksta, također je preporučljivo prilagoditi */
 }
+
+.false {
+  background-color: red;
+}
+
+#game-over {
+  width: 50%;
+  height: 500px;
+  z-index: 55;
+  background-color: blue;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 25%;
+  top: 20%;
+  visibility: hidden;
+}
+
+.ans.correct {
+  /* Green background color for correct answer */
+  background-color: #00ff00;
+}
+
+.ans.wrong {
+  /* Red background color for wrong answer */
+  background-color: #ff0000;
+}

@@ -1,66 +1,152 @@
+//
+
+
 fetch("question.json")
     .then(response => response.json())
-    .then(data => quiz(data));
+    .then(data => quiz(data))
+
 
 function quiz(data) {
+    // console.log(data)
     let questionNum = 0;
-    let moneyTrack = 0;
+    let moneyTrack = -1;
 
+
+
+    // var contentWrapper = document.getElementsByClassName("content-wrapper");
     let questionWrapper = document.getElementById("question");
-    let answerWrapper = document.querySelector(".answers");
-    let rewardDiv = document.getElementById("right-content");
+    var answerWrapper = document.querySelector(".answers");
+    var rewardDiv = document.getElementById("right-conent");
+    let allQuestions = data.questions[questionNum].question;
+    let allAnswers = data.questions[questionNum].answer//to je array
+    let correctAns = data.questions[questionNum].correctAns;
 
+
+    const [answer0, answer1, answer2, answer3] = [
+        allAnswers[0],
+        allAnswers[1],
+        allAnswers[2],
+        allAnswers[3]
+
+    ];
+    //prvo pitanje
+    questionWrapper.innerText = data.questions[questionNum].question;
+
+
+    for (let i = 0; i < allAnswers.length; i++) {
+        answerWrapper.innerHTML = `<div class="ans"> ${answer0}</div><div class="ans"> ${answer1}</div>
+    <div class="ans"> ${answer2}</div>
+    <div class="ans"> ${answer3}</div>`
+    }//iteracija kroz pitanja i stavlja ih u container
+
+    // console.log(allQuestions);
+
+    // event listener za svaki odgovor
     let ans = document.querySelectorAll(".ans");
 
-    function updateMoneyClass() {
-        // Ukloni klasu 'currentMoney' sa svih elemenata
-        moneyArr.forEach((moneyElem) => {
-            moneyElem.classList.remove("currentMoney");
-        });
-
-        // Dodaj klasu 'currentMoney' samo trenutnom elementu
-        moneyArr[questionNum].classList.add("currentMoney");
-    }
-
-    function renderQuestion() {
-        questionWrapper.innerText = data.questions[questionNum].question;
-
-        let allAnswers = data.questions[questionNum].answer;
-        const [answer0, answer1, answer2, answer3] = allAnswers;
-
-        answerWrapper.innerHTML = `
-            <div class="ans">${answer0}</div>
-            <div class="ans">${answer1}</div>
-            <div class="ans">${answer2}</div>
-            <div class="ans">${answer3}</div>
-        `;
-
-        // Ponovno postavljamo event listenere nakon ažuriranja pitanja
-        ans = document.querySelectorAll(".ans");
-        ans.forEach((ans, index) => {
-            ans.addEventListener("click", () => checkCorrect(index, data.questions[questionNum].correctAns));
-        });
-    }
-
     ans.forEach((ans, index) => {
-        ans.addEventListener("click", () => checkCorrect(index, data.questions[questionNum].correctAns));
+        ans.addEventListener("click", () => checkCorrect(index, correctAns));
+
+
+
+
+        const money = document.getElementsByTagName("p");
+        moneyArr = [...money].reverse();
+        // console.log(moneyArr);
+
+        /* for (m = 0; m < moneyArr.length; m++) {
+             moneyArr[moneyTrack].classList.add("currentMoney");
+         }*/
+
+
+
+
+
     });
 
+    //akko uspijem povećati index onda ce correctAns++
     function checkCorrect(ans, index) {
-        console.log("index je: ", index);
+        console.log("index je: ", correctAns);
         if (ans === index) {
             console.log("Točan odgovor!");
-            questionNum++;
-            moneyTrack++;
-            updateMoneyClass();
-            renderQuestion();
-        } else {
-            console.log("Pogrešan odgovor!");
-            // Dodaj logiku za pogrešan odgovor ako je potrebno
-        }
-    }
+            questionNum++
+            moneyTrack++
+            console.log("ans je ", ans, "a indeks je", index);
+            console.log(typeof (correctAns), "ovo je correctAns");
 
-    // Inicijalni poziv funkcija za prikaz prvog pitanja i postavljanje event listenera
-    renderQuestion();
-    updateMoneyClass();
+
+
+
+
+            //money array
+            const money = document.getElementsByTagName("p");
+            moneyArr = [...money].reverse();
+            console.log("ovo je money array: ", moneyArr);
+
+
+            for (m = 0; m < moneyArr.length; m++) {
+                moneyArr[moneyTrack].classList.add("currentMoney");
+
+
+                /*///pokusaj brisanja klase
+                                if (m = moneyArr[moneyTrack] - 1) {
+                                    moneyArr[questionNum].classList.remove("currentMoney")
+                                    console.log("class is removed");
+                                }*/
+
+            }
+
+            //reload
+            correctAns = data.questions[questionNum].correctAns;//moram ga opet ovdje staviti da se ucita
+            //correctAns.style.backgroundColor = "green";
+            questionWrapper.innerText = data.questions[questionNum].question;//opet ucitavam pitanja jer je questionNum++
+
+
+            //  delay 
+            /*  setTimeout(() => {
+                  ans[userAnswerIndex].style.backgroundColor = "";
+              }, 900);*/
+
+
+        } else {
+            ;
+            console.log("Pogrešan odgovor!", moneyArr[questionNum]);
+            moneyArr[questionNum].classList.add("false");
+            //game-over visible
+
+            document.getElementById("game-over").innerText = "you are quite stupid #elStupido"
+
+
+            setTimeout(() => {
+                document.getElementById("game-over").style.visibility = "visible";
+            }, 200);
+
+
+
+
+
+
+
+
+
+            /*// delay 
+            setTimeout(() => {
+                questionWrapper.innerText = data.questions[questionNum].question;
+                ans.forEach(answer => {
+                    // ans[userAnswerIndex].style.backgroundColor = "red";
+                });
+            }, 200);*/
+
+
+        }
+        //  console.log(questionNum, moneyTrack)
+
+
+
+    }
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

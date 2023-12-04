@@ -9,7 +9,8 @@ fetch("question.json")
 function quiz(data) {
     // console.log(data)
     let questionNum = 0;
-    var moneyTrack = 0;
+    let moneyTrack = -1;
+
 
 
     // var contentWrapper = document.getElementsByClassName("content-wrapper");
@@ -53,9 +54,9 @@ function quiz(data) {
         moneyArr = [...money].reverse();
         // console.log(moneyArr);
 
-        for (m = 0; m < moneyArr.length; m++) {
-            moneyArr[questionNum].classList.add("currentMoney");
-        }
+        /* for (m = 0; m < moneyArr.length; m++) {
+             moneyArr[moneyTrack].classList.add("currentMoney");
+         }*/
 
 
 
@@ -77,32 +78,48 @@ function quiz(data) {
             console.log("ovo je money array: ", moneyArr);
 
             for (m = 0; m < moneyArr.length; m++) {
-                moneyArr[questionNum].classList.add("currentMoney");
+                moneyArr[moneyTrack].classList.add("currentMoney");
 
 
-
-                if (m = moneyArr[questionNum] - 1) {
-                    moneyArr[questionNum].classList.remove("currentMoney")
-                    console.log("class is removed");
-                }
+                /*///pokusaj brisanja klase
+                                if (m = moneyArr[moneyTrack] - 1) {
+                                    moneyArr[questionNum].classList.remove("currentMoney")
+                                    console.log("class is removed");
+                                }*/
 
             }
 
             //reload
             correctAns = data.questions[questionNum].correctAns;//moram ga opet ovdje staviti da se ucita
-            // ans[userAnswerIndex].style.backgroundColor = "green";
+
+            // correctAns.style.backgroundColor = "green";
             questionWrapper.innerText = data.questions[questionNum].question;//opet ucitavam pitanja jer je questionNum++
 
 
             //  delay 
-            /* setTimeout(() => {
-              ans[userAnswerIndex].style.backgroundColor = "";
-            }, 900);*/
+            /*  setTimeout(() => {
+                  ans[userAnswerIndex].style.backgroundColor = "";
+              }, 900);*/
 
 
         } else {
-            console.log("Pogrešan odgovor!");
-            // ans[userAnswerIndex].style.backgroundColor = "orange";
+
+            console.log("Pogrešan odgovor!", moneyArr[questionNum]);
+            moneyArr[questionNum].classList.add("false");
+            //game-over visible
+
+            document.getElementById("game-over").innerText = "you are quite stupid #elStupido"//you have won value from <p>
+
+
+            setTimeout(() => {
+                document.getElementById("game-over").style.visibility = "visible";
+            }, 200);
+            setTimeout();
+
+
+
+
+
 
 
 
