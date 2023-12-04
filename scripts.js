@@ -43,10 +43,11 @@ function quiz(data) {
 
     // event listener za svaki odgovor
     let ans = document.querySelectorAll(".ans");
-
+    //na ans pozivamo forEach funkciju te forEach funkciji  dodjeljujemo 2 parametra ans i index
     ans.forEach((ans, index) => {
         ans.addEventListener("click", () => checkCorrect(index, correctAns));
-
+        console.log("ans je ", ans, "index je ", index);
+        console.log("index je ", index, "correctAns je ", correctAns);
 
 
 
