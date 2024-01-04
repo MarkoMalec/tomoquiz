@@ -14,12 +14,15 @@ function quiz(data) {
 
 
     // var contentWrapper = document.getElementsByClassName("content-wrapper");
-    let questionWrapper = document.getElementById("question");
+    let questionWrapper = document.getElementById("question");//html element
     var answerWrapper = document.querySelector(".answers");
     var rewardDiv = document.getElementById("right-conent");
     let allQuestions = data.questions[questionNum].question;
     let allAnswers = data.questions[questionNum].answer//to je array
     let correctAns = data.questions[questionNum].correctAns;
+    let ans2 = answerWrapper.childNodes;
+
+
 
 
     const [answer0, answer1, answer2, answer3] = [
@@ -41,106 +44,100 @@ function quiz(data) {
 
     // console.log(allQuestions);
 
-    // event listener za svaki odgovor
+    //za event listener za svaki odgovor
     let ans = document.querySelectorAll(".ans");
-    //na ans pozivamo forEach funkciju te forEach funkciji  dodjeljujemo 2 parametra ans i index
+    console.log(typeof (ans));
+    console.log(ans2);
+
+    const money = document.getElementsByTagName("p");
+    moneyArr = [...money].reverse();
+    // console.log(moneyArr);
+
+
+
+
+    //na ans pozivamo forEach funkciju te arrow funkciji(koja se nalazi unutar forEacha()) dodjeljujemo 2 parametra ans i index. Prvi parametar je ans koji nam daje elemente  a drugi index koji nam daje inex (broj) svakog elementa
     ans.forEach((ans, index) => {
-        ans.addEventListener("click", () => checkCorrect(index, correctAns));
-        console.log("ans je ", ans, "index je ", index);
-        console.log("index je ", index, "correctAns je ", correctAns);
-
-
-
-        const money = document.getElementsByTagName("p");
-        moneyArr = [...money].reverse();
-        // console.log(moneyArr);
-
-        /* for (m = 0; m < moneyArr.length; m++) {
-             moneyArr[moneyTrack].classList.add("currentMoney");
-         }*/
-
-
-
-
+        ans.addEventListener("click", () => checkCorrect(index, correctAns));//checkCorrect ima parametre index (koji smo dobili od forEach() i correctAns koji se nalazi unutar json-A )
 
     });
 
-    //akko uspijem povećati index onda ce correctAns++
+
+    //CHECK ANSWER
     function checkCorrect(ans, index) {
-        console.log("index je: ", correctAns);
+        // console.log("index je: ", correctAns);
         if (ans === index) {
             console.log("Točan odgovor!");
             questionNum++
             moneyTrack++
-            console.log("ans je ", ans, "a indeks je", index);
-            console.log(typeof (correctAns), "ovo je correctAns");
+
+
+
+            //console.log(typeof (ans));
+            //na sve ansove postaviti listener i onda u if-u provjeriti dali je klasa elementa na koji je kliknuto true, ako je{ postaviti zelenu podlogu tom elementu}; u Num[j]-u je bio problem .... ans typeOf je number 
+            for (let j = 0; j < ans2.length; j++) {
+
+                ans2[j].addEventListener("click", function checkAnswer(e) {
+                    if (e.target.classList == "ans") {
+                        ans2[j].style.backgroundColor = "red";
+                        //    console.log(ans2[j]);
+                    }
+
+
+                    function returnColor() {
+                        document.getElementsByClassName("ans")[j].style.backgroundColor = "#333";
+                    }
+
+                    setTimeout(() => {
+                        returnColor();
+                    }, 1000);
+
+
+                })
+            };
 
 
 
 
-
-            //money array
+            //MONEY ARRAY
             const money = document.getElementsByTagName("p");
             moneyArr = [...money].reverse();
-            console.log("ovo je money array: ", moneyArr);
-
+            //   console.log("ovo je money array: ", moneyArr);
 
             for (m = 0; m < moneyArr.length; m++) {
                 moneyArr[moneyTrack].classList.add("currentMoney");
 
 
-                /*///pokusaj brisanja klase
-                                if (m = moneyArr[moneyTrack] - 1) {
-                                    moneyArr[questionNum].classList.remove("currentMoney")
-                                    console.log("class is removed");
-                                }*/
 
             }
 
-            //reload
+            //RELOAD
             correctAns = data.questions[questionNum].correctAns;//moram ga opet ovdje staviti da se ucita
-            //correctAns.style.backgroundColor = "green";
+
+            // correctAns.style.backgroundColor = "green";
             questionWrapper.innerText = data.questions[questionNum].question;//opet ucitavam pitanja jer je questionNum++
 
 
-            //  delay 
-            /*  setTimeout(() => {
-                  ans[userAnswerIndex].style.backgroundColor = "";
-              }, 900);*/
-
 
         } else {
-            ;
+
             console.log("Pogrešan odgovor!", moneyArr[questionNum]);
             moneyArr[questionNum].classList.add("false");
             //game-over visible
 
-            document.getElementById("game-over").innerText = "you are quite stupid #elStupido"
+            document.getElementById("game-over").innerText = "you are quite stupid #elStupido"//you have won value from <p>
 
 
             setTimeout(() => {
                 document.getElementById("game-over").style.visibility = "visible";
             }, 200);
+            setTimeout();
 
 
-
-
-
-
-
-
-
-            /*// delay 
-            setTimeout(() => {
-                questionWrapper.innerText = data.questions[questionNum].question;
-                ans.forEach(answer => {
-                    // ans[userAnswerIndex].style.backgroundColor = "red";
-                });
-            }, 200);*/
 
 
         }
-        //  console.log(questionNum, moneyTrack)
+
 
 
 

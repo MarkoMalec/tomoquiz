@@ -44,8 +44,9 @@ function quiz(data) {
     // event listener za svaki odgovor
     let ans = document.querySelectorAll(".ans");
 
+    //na ans pozivamo forEach funkciju te arrow funkciji(koja se nalazi unutar forEacha()) dodjeljujemo 2 parametra ans i index. Prvi parametar je ans koji nam daje elemente  a drugi index koji nam daje inex (broj) svakog elementa
     ans.forEach((ans, index) => {
-        ans.addEventListener("click", () => checkCorrect(index, correctAns));
+        ans.addEventListener("click", () => checkCorrect(index, correctAns));//checkCorrect ima parametre index (koji smo dobili od forEach() i correctAns koji se nalazi unutar json-A )
 
 
 

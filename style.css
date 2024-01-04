@@ -89,4 +89,12 @@ body .content-wrapper .right-content div {
 .ans.wrong {
   /* Red background color for wrong answer */
   background-color: #ff0000;
+}
+
+.correct {
+  background-color: green;
+}
+
+.false {
+  background-color: red;
 }/*# sourceMappingURL=style.css.map */
