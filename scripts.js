@@ -125,7 +125,7 @@ function quiz(data) {
             moneyArr[questionNum].classList.add("false");
             //game-over visible
 
-            document.getElementById("game-over").innerText = "you are quite stupid #elStupido"//you have won value from <p>
+            document.getElementById("game-over").innerText = "you should study more #elStupido"//you have won value from <p>
 
 
             setTimeout(() => {
